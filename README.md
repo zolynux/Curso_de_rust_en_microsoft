@@ -1,7 +1,6 @@
 # Curso de Rust en Microsoft 🦀
 
 **Primeros pasos con Rust**
-
 ¿Está interesado en aprender en un nuevo lenguaje de programación que está creciendo en uso y popularidad? ¡Empiece por aquí! Siente las bases del conocimiento que necesita para compilar programas rápidos y eficaces en Rust.
 
 En esta ruta de aprendizaje, hará lo siguiente:
@@ -77,7 +76,6 @@ En esta ruta de aprendizaje, hará lo siguiente:
 # Qué es Rust
 
 Una introducción rápida a las características del lenguaje Rust y comparación de Rust con otros lenguajes de programación.
-
 
 ## Introducción
 
@@ -215,7 +213,6 @@ El área de juegos es un IDE para el desarrollo en Rust, que está disponible en
 
 En el área de juegos, puede acceder a los métodos y funciones de la biblioteca estándar de Rust, `std`. Los 100 crates principales más descargados de la biblioteca `crates.io` también están disponibles junto con sus dependencias.
 
-
 ### Herramientas y características
 
 El sitio de prueba de Rust tiene varias herramientas y características de desarrollo integradas:
@@ -225,8 +222,7 @@ El sitio de prueba de Rust tiene varias herramientas y características de desar
 - Guardar código: a medida que se trabaja en el sitio de prueba de Rust, el código se guarda automáticamente en el almacenamiento local del explorador. Esta característica facilita la recuperación del trabajo más reciente, en especial si cierra la ventana del explorador.
 - Compartir código: la característica **Compartir** crea un gist de GitHub que se puede compartir para el código del sitio de prueba. Puede guardar esta dirección URL para acceder al código más adelante. La dirección URL carga el gist del código específico en el área de juegos.
 
- 
-> [!NOTE] Nota
+> **Nota:**
 > El almacenamiento local de un explorador es un recurso singleton. Si tiene más de una ventana del explorador abierta en el área de juegos de Rust y está trabajando con código diferente en cada ventana, solo el código guardado más recientemente entre todas las ventanas se conservará en el almacenamiento local.
 
 ### Opciones de compilación
@@ -355,7 +351,7 @@ Un archivo de código fuente de Rust es un archivo de texto con una extensión .
 
 Normalmente, la sintaxis de Rust se escribe en un archivo de texto y se guarda en la unidad de disco duro local. Se puede escribir código mediante un editor de archivos de texto simple, como el Bloc de notas de Windows. El Bloc de notas edita texto ASCII, un formato de archivo de texto estándar simple.
 
-> [!TIP] Sugerencia
+> **Sugerencia:**
 > Evite el uso de editores de texto que incluyan opciones de formato, como negrita, subrayado o cursiva, o de cualquier otro programa que tenga características de procesamiento de texto. Por ejemplo, no escriba código en Microsoft Word ni en TextEdit en macOS. Estos programas tienen instrucciones de formato adicionales que el compilador de Rust no entenderá.
 
 Aunque puede usar un editor de texto, normalmente se suele usar una herramienta que se adapte mejor a los desafíos asociados a la escritura de código. Hay gran cantidad de opciones, pero muchos desarrolladores confían en Visual Studio Code para este propósito. Visual Studio Code es gratis y está disponible en Windows, macOS y Linux. Tiene muchas características que permiten navegar fácilmente por el código, independientemente del lenguaje de programación con el que quiera trabajar.
@@ -385,7 +381,7 @@ Si no tiene instaladas las herramientas de compilación, siga estos pasos:
   4. En el cuadro de diálogo emergente, seleccione Sí. En el siguiente cuadro de diálogo emergente, seleccione **Continuar**.
   5. En la ventana del instalador, en **Móviles y de escritorio**, active la casilla de la opción **Desarrollo de escritorio con C++**.
   6. En el panel **Detalles de la instalación**, asegúrese de que estén seleccionadas las siguientes opciones:
-  > [!NOTE] Nota
+  > **Nota:**
   > Asegúrese de seleccionar el SDK correcto para el sistema operativo.
   ![alt text](image-8.png)
   7. Seleccione **Instalar**
@@ -400,7 +396,7 @@ La manera recomendada de instalar Rust es usar `rustup`, el instalador de la cad
 
 En Linux o macOS, copie el comando curl seleccionando el icono del portapapeles. Después, abra el terminal del equipo o el símbolo del sistema para pegar el comando y siga las instrucciones que aparecen en pantalla. En Windows, siga las instrucciones del instalador.
 
-> [!IMPORTANT] Importante
+> **Importante:**
 > Rust requiere las herramientas de compilación de Microsoft C++ para Visual Studio 2013 o versiones posteriores. Las herramientas de compilación deben instalarse antes de instalar Rust. Si tiene que instalar las herramientas de compilación, vea los pasos de la unidad anterior.
 
 Rust tiene un proceso de lanzamiento rápido de seis semanas y admite un gran número de plataformas, por lo que hay muchas compilaciones de Rust disponibles en cualquier momento. Si ha instalado `rustup` en el pasado, puede actualizar a la versión estable más reciente de Rust ejecutando el comando `rustup update`.
@@ -409,7 +405,7 @@ Rust tiene un proceso de lanzamiento rápido de seis semanas y admite un gran n�
 
 Una vez completada la instalación de Rust, debe tener disponibles los comandos `rustc` y `cargo`.
 
-> [!NOTE] Nota
+> **Nota:**
 > Los comandos siguientes funcionan en todas las plataformas.
 
 Ejecute el siguiente comando en el terminal o símbolo del sistema:
@@ -491,7 +487,6 @@ mkdir hello-world
 cd hello-world
 ~~~
 
-
 ### Escritura del primer programa con Rust
 
 A continuación, cree un nuevo archivo denominado main.rs y use el editor para escribir el código siguiente:
@@ -530,7 +525,7 @@ Hello, world!
 
 Ahora se usará Cargo para escribir y ejecutar el mismo programa.
 
-> [!NOTE] Nota
+> **Nota:**
 > Los comandos de las secciones siguientes funcionan en todas las plataformas
 
 Para empezar, se use Cargo para crear un proyecto.
