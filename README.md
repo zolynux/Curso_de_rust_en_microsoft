@@ -95,6 +95,19 @@ En esta ruta de aprendizaje, hará lo siguiente:
     - [Creación de una instancia de una estructura](#creación-de-una-instancia-de-una-estructura)
     - [Conversión de un literal de cadena en un tipo String](#conversión-de-un-literal-de-cadena-en-un-tipo-string)
     - [Comprobación de conocimientos en definición de colecciones de datos mediante tuplas y estructuras](#comprobación-de-conocimientos-en-definición-de-colecciones-de-datos-mediante-tuplas-y-estructuras)
+  - [Uso de variante de enumeración para datos compuestos](#uso-de-variante-de-enumeración-para-datos-compuestos)
+    - [Definición de una enumeración](#definición-de-una-enumeración)
+    - [Definición de una enumeración con estructuras](#definición-de-una-enumeración-con-estructuras)
+    - [Creación de una instancia de una enumeración](#creación-de-una-instancia-de-una-enumeración)
+    - [Variante simple: WELoad(bool)](#variante-simple-weloadbool)
+    - [Variante de estructura: WEClick(MouseClick)](#variante-de-estructura-weclickmouseclick)
+    - [Variable de tupla: WEKeys(KeyPress)](#variable-de-tupla-wekeyskeypress)
+    - [Ejemplo de enumeraciones](#ejemplo-de-enumeraciones)
+    - [Instrucciones de depuración](#instrucciones-de-depuración)
+  - [Trabajo con funciones en Rust](#trabajo-con-funciones-en-rust)
+    - [Definir una función](#definir-una-función)
+    - [Pasar argumentos de entrada](#pasar-argumentos-de-entrada)
+    - [Devolución de un valor](#devolución-de-un-valor)
 
 ---
 
@@ -134,7 +147,7 @@ Rust es un lenguaje de programación de sistemas de código abierto que puede us
 Rust también ofrece las siguientes ventajas que lo hacen ideal para una amplia gama de aplicaciones.
 
 - **Seguridad de tipos:** el compilador garantiza que no se aplicará ninguna operación a una variable de un tipo incorrecto.
-- **Seguridad de memoria:** los punteros de Rust (conocidos como *referencia*) siempre hacen referencia a la memoria válida.
+- **Seguridad de memoria:** los punteros de Rust (conocidos como _referencia_) siempre hacen referencia a la memoria válida.
 - **Sin carrera de datos:** el comprobador de préstamos de Rust garantiza la seguridad para subprocesos asegurándose de que varias partes de un programa no puedan mutar el mismo valor al mismo tiempo.
 - **Abstracciones de costo cero:** Rust permite el uso de conceptos generales, como la iteración, las interfaces y la programación funcional, con un costo de rendimiento mínimo o nulo. Las abstracciones funcionan tan bien como si hubiera escrito el código subyacente a mano.
 - **Tiempo de ejecución mínimo:** Rust tiene un tiempo de ejecución mínimo y opcional. Con el fin de administrar la memoria de forma eficaz, el lenguaje tampoco tiene ningún recolector de elementos no utilizados. De este modo, Rust se parece más a lenguajes como C y C++.
@@ -157,7 +170,7 @@ En esta unidad, revisaremos algunas de las características y limitaciones de Ru
 
 ### Administración de código con el sistema de módulo de Rust
 
-Rust ofrece un colección de características que le ayudarán a administrar y organizar el código. Estas características se conocen como **sistema de módulos de Rust**. El sistema se compone de *crates, módulos y rutas*, as+i como herramientas para trabajar con esos elementos.
+Rust ofrece un colección de características que le ayudarán a administrar y organizar el código. Estas características se conocen como **sistema de módulos de Rust**. El sistema se compone de _crates, módulos y rutas_, as+i como herramientas para trabajar con esos elementos.
 
 - **Crates**: Un crate de Rust es una unidad de compilación. Es el fragmento de código más pequeño que puede ejecutar el compilador de Rust. El código de un crate se compila en conjunto para crear un archivo ejecutable binario o una biblioteca. En Rust, solo los crates se compilan como unidades reutilizables. Un crate contiene una jerarquía de módulos de Rust con un módulo implícito de nivel superior sin nombre.
 - **Módulos:** Los módulos de Rust ayudan a organizar el programa, ya que permiten administrar el ámbito de los elementos de código individuales dentro de un crate. Los elementos de código relacionado o los elementos que se usan juntos se pueden agrupar en el mismo módulo. Las definiciones de código recursivas pueden abarcar otros módulos.
@@ -176,7 +189,7 @@ Hay decenas de miles de bibliotecas y crates de terceros disponibles para su uso
   - std::fs: Funciones para trabajar con el sistema de archivos.
   - std::io: Definiciones y funcionalidad para trabajar con entradas y salidas.
   - std::path: Definiciones y funciones que permiten trabajar con datos de ruta de acceso del sistema de archivo.
-- [structopt]((https://crates.io/crates/structopt)): crate de terceros para analizar argumentos de línea de comandos fácilmente.
+- [structopt](<(https://crates.io/crates/structopt)>): crate de terceros para analizar argumentos de línea de comandos fácilmente.
 - [chrono](https://crates.io/crates/chrono): crate de terceros para controlar los datos de fecha y hora.
 - [regex](https://crates.io/crates/regex): crate de terceros para trabajar con expresiones regulares.
 - [serde](https://crates.io/crates/serde): crate de terceros con operaciones de serialización y deserialización de estructuras de datos de Rust.
@@ -245,7 +258,7 @@ En el área de juegos, puede acceder a los métodos y funciones de la biblioteca
 El sitio de prueba de Rust tiene varias herramientas y características de desarrollo integradas:
 
 - Código de formato: la herramienta **Rustfmt** da formato al código para seguir los estilos oficiales de Rust. La herramienta ajusta el código y aplica la sangría y el espaciado recomendados entre los elementos y operadores.
-- Probar código: la herramienta **Clippy** comprueba si hay errores en el código. La herramienta ejecuta pruebas de *lint* en el código para buscar errores y áreas de mejora.
+- Probar código: la herramienta **Clippy** comprueba si hay errores en el código. La herramienta ejecuta pruebas de _lint_ en el código para buscar errores y áreas de mejora.
 - Guardar código: a medida que se trabaja en el sitio de prueba de Rust, el código se guarda automáticamente en el almacenamiento local del explorador. Esta característica facilita la recuperación del trabajo más reciente, en especial si cierra la ventana del explorador.
 - Compartir código: la característica **Compartir** crea un gist de GitHub que se puede compartir para el código del sitio de prueba. Puede guardar esta dirección URL para acceder al código más adelante. La dirección URL carga el gist del código específico en el área de juegos.
 
@@ -294,9 +307,9 @@ Para empezar, vamos a escribir código para un programa básico.
 1. Conéctese al [Área de juegos de Rust](https://play.rust-lang.org/).
 2. Escriba el código siguiente en el editor del área de juegos:
 
-~~~rust
+```rust
 fn main(){println!(Welcome to Rust!);}
-~~~
+```
 
 3. Seleccione **Herramientas** > **Rustfmt** para dar formato al código:
 
@@ -318,18 +331,18 @@ La herramienta ajusta el código para seguir los estilos oficiales de Rust:
 
 Ahora se compilará el código y se ejecutará el programa.
 
-  1. Para elegir cómo compilar y ejecutar el código en el sitio de prueba, abra el menú desplegable **Run** (Ejecución) en la parte superior de la interfaz de usuario:
-  ![alt text](image-5.png)
-  2. Seleccione **Run** para compilar y ejecutar el programa de ejemplo. La salida del programa se muestra en el editor:
-  ![alt text](image-6.png)
+1. Para elegir cómo compilar y ejecutar el código en el sitio de prueba, abra el menú desplegable **Run** (Ejecución) en la parte superior de la interfaz de usuario:
+   ![alt text](image-5.png)
+2. Seleccione **Run** para compilar y ejecutar el programa de ejemplo. La salida del programa se muestra en el editor:
+   ![alt text](image-6.png)
 
 ### Guardado y uso compartido de código en el sitio de prueba
 
 A medida que trabaje en el sitio de prueba, el código se guardará automáticamente en el almacenamiento del explorador. Si cierra la ventana del explorador, puede perder el código que ha escrito. Para que el código esté siempre disponible, puede crear un dirección URL compartible.
 
-  1. Seleccione la característica **Share** (Compartir) en la barra de herramientas para crear un gist de GitHub para el código en el sitio de prueba:
-  ![alt text](image-7.png)
-  2. Seleccione el icono de papel junto al texto **Permalink to the playground** (Vinculo permanente al área de juegos) para obtener un gist que se pueda compartir para el código.
+1. Seleccione la característica **Share** (Compartir) en la barra de herramientas para crear un gist de GitHub para el código en el sitio de prueba:
+   ![alt text](image-7.png)
+2. Seleccione el icono de papel junto al texto **Permalink to the playground** (Vinculo permanente al área de juegos) para obtener un gist que se pueda compartir para el código.
 
 Ahora se puede guardar la dirección URL para acceder al código más tarde, o bien compartir la URL para que otros usuarios vean el código.
 
@@ -345,7 +358,7 @@ Hemos analizado el entorno del área de juego de Rust y hemos visto cómo escrib
 
 ### Prueba de las recetas en la guía paso a paso de Rust
 
-La Rust Cookbook contiene *recetas* para el código que sigue las prácticas recomendadas para tareas de programación comunes. Al seguir las recetas, puede obtener información sobre cómo trabajar con los crates usados con frecuencia en Rust. Las recetas abarcan una amplia variedad de temas, incluido el procesamiento de texto y números, el trabajo con bases de datos, la aplicación de algoritmo comunes y la depuración de programas. Puede leer Rust Cookbook en el [sitio web de Rust](https://rust-lang-nursery.github.io/rust-cookbook/).
+La Rust Cookbook contiene _recetas_ para el código que sigue las prácticas recomendadas para tareas de programación comunes. Al seguir las recetas, puede obtener información sobre cómo trabajar con los crates usados con frecuencia en Rust. Las recetas abarcan una amplia variedad de temas, incluido el procesamiento de texto y números, el trabajo con bases de datos, la aplicación de algoritmo comunes y la depuración de programas. Puede leer Rust Cookbook en el [sitio web de Rust](https://rust-lang-nursery.github.io/rust-cookbook/).
 
 ### Referencias
 
@@ -410,18 +423,17 @@ Rust requiere las herramientas de compilación de Microsoft C++ para Visual Stud
 
 Si no tiene instaladas las herramientas de compilación, siga estos pasos:
 
-  1. Vaya a la [página de descarga de Microsoft Visual Studio](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
-  2. Seleccione **Descargar Build Tools**.
-  3. Una vez finalizada la descarga, ejecute el archivo del instalador. Se abre la ventana del instalador de Visual Studio.
-  4. En el cuadro de diálogo emergente, seleccione Sí. En el siguiente cuadro de diálogo emergente, seleccione **Continuar**.
-  5. En la ventana del instalador, en **Móviles y de escritorio**, active la casilla de la opción **Desarrollo de escritorio con C++**.
-  6. En el panel **Detalles de la instalación**, asegúrese de que estén seleccionadas las siguientes opciones:
-  
-  > **Nota:**
-  > Asegúrese de seleccionar el SDK correcto para el sistema operativo.
-  
-  ![alt text](image-8.png)
-  7. Seleccione **Instalar**
+1. Vaya a la [página de descarga de Microsoft Visual Studio](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+2. Seleccione **Descargar Build Tools**.
+3. Una vez finalizada la descarga, ejecute el archivo del instalador. Se abre la ventana del instalador de Visual Studio.
+4. En el cuadro de diálogo emergente, seleccione Sí. En el siguiente cuadro de diálogo emergente, seleccione **Continuar**.
+5. En la ventana del instalador, en **Móviles y de escritorio**, active la casilla de la opción **Desarrollo de escritorio con C++**.
+6. En el panel **Detalles de la instalación**, asegúrese de que estén seleccionadas las siguientes opciones:
+
+> **Nota:**
+> Asegúrese de seleccionar el SDK correcto para el sistema operativo.
+
+![alt text](image-8.png) 7. Seleccione **Instalar**
 
 Una vez completa la instalación, puede continuar con la instalación de Rust.
 
@@ -447,27 +459,27 @@ Una vez completada la instalación de Rust, debe tener disponibles los comandos 
 
 Ejecute el siguiente comando en el terminal o símbolo del sistema:
 
-~~~bash
+```bash
 rustc --version
-~~~
+```
 
 Debería ver una salida como la de este ejemplo:
 
-~~~bash
+```bash
 rustc 1.76.0 (07dca489a 2024-02-04)
-~~~
+```
 
 Luego, ejecute el siguiente comando:
 
-~~~bash
+```bash
 cargo --version
-~~~
+```
 
 Debería ver una salida similar a esta:
 
-~~~bash
+```bash
 cargo 1.50.0 (f04e7fab7 2021-02-04)
-~~~
+```
 
 Ambas líneas de salida contienen la siguiente información sobre las versiones estables más recientes de Rust y Cargo que están disponibles:
 
@@ -507,31 +519,31 @@ Empiece por crear un directorio para almacenar todo el código en esta ruta de a
 
 Para Linux y macOS, ejecute los siguientes comandos:
 
-~~~bash
+```bash
 mkdir ~/rust-learning-path
 cd ~/rust-learning-path
 mkdir hello-world
 cd hello-world
-~~~
+```
 
 Para PowerShell en Windows, ejecute los siguientes comandos:
 
-~~~powershell
+```powershell
 mkdir "%USERPROFILE%\rust-learning-path"
 cd /d "%USERPROFILE%\rust-learning-path"
 mkdir hello-world
 cd hello-world
-~~~
+```
 
 ### Escritura del primer programa con Rust
 
 A continuación, cree un nuevo archivo denominado main.rs y use el editor para escribir el código siguiente:
 
-~~~rust
+```rust
 fn main() {
   println!("Hello, world!");
 }
-~~~
+```
 
 ### Compilación y ejecución del programa
 
@@ -539,23 +551,23 @@ El código fuente está listo. Ahora es el momento de compilar el programa en un
 
 En Windows, ejecute los siguientes comandos:
 
-~~~powershell
+```powershell
 rustc main.rs
 .\main.exe
-~~~
+```
 
 Si está en Linux o macOS, ejecute los siguientes comandos:
 
-~~~bash
+```bash
 rustc main.rs
 ./main
-~~~
+```
 
 Debería ver la siguiente salida:
 
-~~~bash
+```bash
 Hello, world!
-~~~
+```
 
 ### Creación de un proyecto con Cargo
 
@@ -568,19 +580,19 @@ Para empezar, se use Cargo para crear un proyecto.
 
 Asegúrese de que el terminal está en el directorio `rust-learning-path` y ejecute el siguiente comando:
 
-~~~bash
+```bash
 cargo new hello-cargo
-~~~
+```
 
-Este comando generado un nuevo directorio denominado *hello-cargo* con un subdirectorio *src* y agrega dos archivos:
+Este comando generado un nuevo directorio denominado _hello-cargo_ con un subdirectorio _src_ y agrega dos archivos:
 
 > hello-cargo/
->      Cargo.toml
->      src/
->          main.rs
+> Cargo.toml
+> src/
+> main.rs
 
-- El archivo *Cargo.toml* es el archivo de manifiesto de Rust. Es donde se conservan los metadatos para el proyecto, así como las dependencias.
-- El archivo *main.rs* en el subdirectorio *src* es donde escribirá el código de la aplicación.
+- El archivo _Cargo.toml_ es el archivo de manifiesto de Rust. Es donde se conservan los metadatos para el proyecto, así como las dependencias.
+- El archivo _main.rs_ en el subdirectorio _src_ es donde escribirá el código de la aplicación.
 
 Observe que el comando `cargo new` generó un proyecto "Hola mundo" reutilizable automáticamente.
 
@@ -590,20 +602,20 @@ Para ejecutar el programa reutilizable, pasaremos al nuevo directorio hello-carg
 
 Ejecute los siguientes comandos en el terminal:
 
-~~~bash
+```bash
 cd hello-cargo
 cargo run
-~~~
+```
 
 Debería aparecer la salida siguiente en el terminal:
 
-~~~bash
+```bash
 Compiling hello-cargo v0.1.0 (/tmp/.OFUp/hello-cargo)
     Finished dev [unoptimized + debuginfo] target(s) in 1.59s
       Running `target/debug/hello-cargo`
 
 Hello, world!
-~~~
+```
 
 Cargo ha compilado y ejecutado el archivo ejecutable.
 
@@ -649,7 +661,7 @@ En este módulo, aprenderá a:
 
 ## Descripción de la estructura básica de programas de Rust
 
-En esta unidad, se  revisa cómo se estructura un programa simple de Rust.
+En esta unidad, se revisa cómo se estructura un programa simple de Rust.
 
 ### Funciones en Rust
 
@@ -657,13 +669,13 @@ Una función es un bloque de código que realiza una tarea específica. Separamo
 
 Cada programa de Rust debe tener una función llamada `main`, El código de la función `main` siempre es el primer código que se ejecuta en un programa con Rust. Podemos llamar a otras funciones desde la función `main` o desde otras funciones.
 
-~~~rust
+```rust
 fn main() {
   println!("Hello, world!");
 }
-~~~
+```
 
-Para declarar una función en Rust, usamos la palabra clave `fn`. Después del nombre de la función, se le indica al compilador cuántos parámetros o *argumentos* espera la función como entrada. Los argumentos se enumeran entre paréntesis `()`. El *cuerpo de la función* es el código que realiza la tarea de una función y se define entre llaves `{}`. Un procedimiento recomendado consiste en aplicar formato al código para que la llave de apertura del cuerpo de la función aparezca justo después de la lista de argumentos entre paréntesis.
+Para declarar una función en Rust, usamos la palabra clave `fn`. Después del nombre de la función, se le indica al compilador cuántos parámetros o _argumentos_ espera la función como entrada. Los argumentos se enumeran entre paréntesis `()`. El _cuerpo de la función_ es el código que realiza la tarea de una función y se define entre llaves `{}`. Un procedimiento recomendado consiste en aplicar formato al código para que la llave de apertura del cuerpo de la función aparezca justo después de la lista de argumentos entre paréntesis.
 
 ### Sangría del código
 
@@ -673,7 +685,7 @@ Para ayudar a ver las relaciones de ejecución en el código, usamos la sangría
 
 Veamos un ejemplo:
 
-~~~rust
+```rust
 fn main() { // The function declaration is not indented
 
     // First step in function body
@@ -686,7 +698,7 @@ fn main() { // The function declaration is not indented
 
     // Third step in function body, and so on...
 }
-~~~
+```
 
 ### Macro todo! macro
 
@@ -694,34 +706,34 @@ Cuando trabaje en los ejercicios de los módulos de Rust, observará que en el c
 
 Este es un ejemplo de cómo se usa la macro `todo!` en los ejercicios:
 
-~~~rust
+```rust
 fn main() {
   // Display the message "Hello, world!"
   todo!("Display the message by using the println!() macro");
 }
-~~~
+```
 
 Al compilar código en el que se usa la macro `todo!`, el compilador puede devolver un mensaje de alarma en el que espera encontrar la funcionalidad completada:
 
-~~~cmd
+```cmd
 Compiling playground v0.0.1 (/playground)
     Finished dev [unoptimized + debuginfo] target(s) in 1.50s
      Running `target/debug/playground`
 thread 'main' panicked at 'not yet implemented: Display the message by using the println!() macro', src/main.rs:3:5
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-~~~
+```
 
 ### El println! macro
 
-Nuestra función `main` realiza una tarea. Llama a la macro `println!` predefinida en Rust. La macro `println!` espera uno o varios argumentos de entrada, que se muestran en la pantalla o en la *salida estándar*. En nuestro ejemplo, pasamos un argumento de entrada a la macro, la cadena de texto "Hello, world!".
+Nuestra función `main` realiza una tarea. Llama a la macro `println!` predefinida en Rust. La macro `println!` espera uno o varios argumentos de entrada, que se muestran en la pantalla o en la _salida estándar_. En nuestro ejemplo, pasamos un argumento de entrada a la macro, la cadena de texto "Hello, world!".
 
-~~~rust
+```rust
 fn main() {
   // Our main function does one task: show a message
   // println! displays the input "Hello, world!" to the screen
   println!("Hello, world!");
 }
-~~~
+```
 
 ### Sustitución de valores para argumentos {}
 
@@ -729,20 +741,20 @@ En las lecciones del módulo de Learn de Rust, a menudo llamamos a la macro `pri
 
 Veamos un ejemplo:
 
-~~~rust
+```rust
 fn main() {
   // Call println! with three arguments: a string, a value, a value
   println!("The first letter of the English alphabet is {} and the last letter is {}", 'A', 'Z');
 }
-~~~
+```
 
 Llamamos a la macro `println!` con tres argumentos: una cadena, un valor y otro valor. La macro procesa los argumentos por orden. Cada instancia de llaves `{}` dentro de una cadena de texto se reemplaza por el valor del argumentos siguiente de la lista.
 
 La salida es la siguiente:
 
-~~~cmd
+```cmd
 The first letter of the English alphabet is A and the last letter is Z
-~~~
+```
 
 ### Comprobación de conocimiento
 
@@ -763,29 +775,29 @@ Responda a las preguntas siguientes para ver lo que ha aprendido. Elija una resp
 
 ## Creación y uso de variables en Rust
 
-Los desarrolladores escriben para trabajar con datos. Los datos se recopilan, analizan, almacenan, procesan, comparten y notifican. Usamos *variables* para almacenar nuestros datos en una referencia con nombre, que podemos consultar más adelante en el código.
+Los desarrolladores escriben para trabajar con datos. Los datos se recopilan, analizan, almacenan, procesan, comparten y notifican. Usamos _variables_ para almacenar nuestros datos en una referencia con nombre, que podemos consultar más adelante en el código.
 
 ### Variable
 
-En Rust, una variable se declara con la palabra clave `let`.  Cada variable tiene un nombre único. Cuando se declara una variable, se puede enlazar a un valor o el valor se puede enlazar más adelante en el programa. El código siguiente declara una variable denominada `a_number`.
+En Rust, una variable se declara con la palabra clave `let`. Cada variable tiene un nombre único. Cuando se declara una variable, se puede enlazar a un valor o el valor se puede enlazar más adelante en el programa. El código siguiente declara una variable denominada `a_number`.
 
-~~~rust
+```rust
 let a_number;
-~~~
+```
 
 La variable `a_number` aún no está enlazado a un valor. podemos modificar esta instrucción para enlazar un valor a la variable:
 
-~~~rust
+```rust
 let a_number = 10;
-~~~
+```
 
 > **Nota**
 >
-> **Palabras clave** Al igual que con otros lenguajes de programación, determinadas *palabra clave*, como `fn` y `let`, están reservadas para que las use Rust únicamente. Las palabras clave no se pueden usar como nombres de funciones o variables.
+> **Palabras clave** Al igual que con otros lenguajes de programación, determinadas _palabra clave_, como `fn` y `let`, están reservadas para que las use Rust únicamente. Las palabras clave no se pueden usar como nombres de funciones o variables.
 
 Veamos otro ejemplo. El código siguiente declara dos variables. La primera variable se declara, pero no se enlaza a un valor. La segunda variable se declara y enlaza a un valor. Más adelante en el programa, la primera variable se enlaza a un valor. El código llama a la macro `println!` para mostrar los valores de la variable.
 
-~~~rust
+```rust
 // Declara una variable
 let a_number;
 
@@ -797,14 +809,14 @@ a_number = 10;
 
 println!("The number is {}.", a_number);
 println!("The word is {}.", a_word);
-~~~
+```
 
 Nuestro ejemplo imprime la siguiente salida:
 
-~~~cmd
+```cmd
 The number is 10.
 The word is Ten.
-~~~
+```
 
 Si llamamos a la macro `println!` e intentamos mostrar el valor de la variable `a_number` antes de enlazarla, el compilador devuelve un error.
 
@@ -816,16 +828,16 @@ En Rust, los enlaces de variables son inmutables de manera predeterminada. Cuand
 
 Por ejemplo, si intentamos cambiar el valor de la variable `a_number` del ejemplo anterior, recibiremos un mensaje de error del compilar.
 
-~~~rust
+```rust
 // Cambia el valor de una inmutable variable
 a_number = 15;
-~~~
+```
 
 Puede probar este cambio y ver el mensaje de erro en el [área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=7619f3a57e95b1c161d410641f9e88fb%3Fazure-portal%3Dtrue).
 
 Para mutar un valor, debemos usar en primer lugar la palabra clave `mut` para convertir en mutable el enlace de una variable.
 
-~~~rust
+```rust
 // el palabra clave `mut` se permite la variable ser cambiado
 let mut a_number = 10;
 println!("El número es {}.", a_number);
@@ -833,14 +845,14 @@ println!("El número es {}.", a_number);
 // Cambio el valor de una variable mutable
 a_number = 15;
 println!("Ahora el número es {}.", a_number);
-~~~
+```
 
 Este ejemplo imprime la salida siguiente:
 
-~~~cmd
+```cmd
 El número es 10.
 Ahora el número es 15.
-~~~
+```
 
 Este código se compila sin errores porque la variable `a_number` ahora puede mutarse.
 
@@ -850,7 +862,7 @@ Puede declarar una variable nueva que use el nombre de una existente. La declara
 
 En el código siguiente se muestra cómo usar la propiedad reemplazada. Declaramos una variable denominada `shadow_num` mientras se reemplaza la propiedad del enlace de la variable anterior.
 
-~~~rust
+```rust
 // Declare first variable binding with name "shadow_num"
 let shadow_num = 5;
 
@@ -861,7 +873,7 @@ let shadow_num = shadow_num + 5;
 let shadow_num = shadow_num * 2;
 
 println!("The number is {}.", shadow_num);
-~~~
+```
 
 ¿Puede adivinar la salida? visite el [Área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=ece8cff9611f109439db2645d75e98d6%3Fazure-portal%3Dtrue) para ejecutar este ejemplo.
 
@@ -870,6 +882,7 @@ println!("The number is {}.", shadow_num);
 Responda a las preguntas siguientes para ver lo que ha aprendido. Elija una respuesta para cada pregunta y, después, seleccione **Comprobar las respuestas.**
 
 1. ¿Qué instrucción de Rust declara una variable y enlaza un valor?
+
    - [x] `let continents = 7;`
    - [ ] `continents = 7;`
    - [ ] `let continents;`
@@ -881,24 +894,24 @@ Responda a las preguntas siguientes para ver lo que ha aprendido. Elija una resp
 
 ## Exploración de tipos de datos para números, texto y valores true/false
 
-Rust es un lenguaje con establecimiento de tipos en modo estático. El compilador debe conocer el tipo de datos exacto  de todas las variables del código para que el programa se compile y ejecute. Normalmente, el compilador puede inferir el tipo de datos de una variable en función del valor enlazado. No siempre es necesario indicar de forma explícita el tipo en el código. Cuando son posibles muchos tipos, debe informar al compilador del tipo específico mediante *anotaciones de tipo*.
+Rust es un lenguaje con establecimiento de tipos en modo estático. El compilador debe conocer el tipo de datos exacto de todas las variables del código para que el programa se compile y ejecute. Normalmente, el compilador puede inferir el tipo de datos de una variable en función del valor enlazado. No siempre es necesario indicar de forma explícita el tipo en el código. Cuando son posibles muchos tipos, debe informar al compilador del tipo específico mediante _anotaciones de tipo_.
 
 En el ejemplo siguiente, se le indica al compilador que cree la variable `number` como un entero de 32 bits. Especificamos el tipo de datos `u32` después del nombre de la variable. Observe que después del nombre de la variable se usa el carácter de dos puntos `:`.
 
-~~~rust
+```rust
 let number: u32 = 14;
 println!("The number is {}.", number);
-~~~
+```
 
 Si ponemos el valor de la variable entre comillas dobles, el compilador interpreta el valor como texto en lugar de como un número. El tipo de datos deducido del valor no coincide con el tipo de datos `u32` especificado para la variable, por lo que el compilador emite un error:
 
-~~~rust
+```rust
 let number: u32 = "14";
-~~~
+```
 
 Error del compilador:
 
-~~~cmd
+```cmd
 Compiling playground v0.0.1 (/playground)
 error[E0308]: mismatched types
  --> src/main.rs:2:23
@@ -909,13 +922,13 @@ error[E0308]: mismatched types
   |                 expected due to this
 
 error: aborting due to previous error
-~~~
+```
 
 Se puede interactuar con el código anterior en esta [área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=d1635823974d9456858611266a32ffa6%3Fazure-portal%3Dtrue).
 
 ### Tipos de datos integrados
 
-Rust incluye algunos tipos de datos primitivos integrados para expresar números, texto y veracidad. Algunos de estos tipos se conocen como *escalares*, porque representan un solo valor:
+Rust incluye algunos tipos de datos primitivos integrados para expresar números, texto y veracidad. Algunos de estos tipos se conocen como _escalares_, porque representan un solo valor:
 
 - Números enteros
 - Números de punto flotante
@@ -926,7 +939,7 @@ Rust también ofrece tipos de datos más complejos para trabajar con series de d
 
 ### Números: valores enteros y de puntos flotante
 
-Los enteros en Rust se identifican por el tamaño en bits y la propiedad *signed*. Un entero con **signo** puede ser un número positivo o negativo. Un entero **sin signo** solo puede ser un número positivo.
+Los enteros en Rust se identifican por el tamaño en bits y la propiedad _signed_. Un entero con **signo** puede ser un número positivo o negativo. Un entero **sin signo** solo puede ser un número positivo.
 
 | **Length**                       | **Signo** | **Sin signo** |
 | -------------------------------- | --------- | ------------- |
@@ -935,26 +948,26 @@ Los enteros en Rust se identifican por el tamaño en bits y la propiedad *signed
 | 32 bits                          | `i32`     | `u32`         |
 | 64 bits                          | `i64`     | `u64`         |
 | 128 bits                         | `i128`    | `u128`        |
-| *dependiente de la arquitectura* | `isize`   | `usize`       |
+| _dependiente de la arquitectura_ | `isize`   | `usize`       |
 
 Los tipos `isize` y `usize` dependen del tipo de equipo en el que se ejecuta el programa. El tipo de 64 bits se usa en una arquitectura de 64 bits y el tipo de 32 bits, en una arquitectura de 32 bits. Si no especifica el tipo para un entero, y el sistema no puede deducir el tipo, asigna el tipo `i32` (un entero de 32 bits con signo) de forma predeterminada.
 
 Rust tiene dos tipos de datos de punto flotante para los valores decimales: `f32` (32 bits) y `f64` (64 bits). El tipo de punto flotante predeterminado es `f64`. En las CPU modernas, el tipo `f64` tiene aproximadamente la misma velocidad que el tipo `f32`, pero cuenta con una mayor precisión.
 
-~~~rust
+```rust
 let number_64 = 4.0; // compiler infers the value to use the default type f64
 let number_32: f32 = 5.0; // type f32 specified via annotation
-~~~
+```
 
 Todos los tipos de números primitivos en Rust admiten operaciones matemáticas como suma, resta, multiplicación y división.
 
-~~~rust
+```rust
 // Addition, subtraction, and multiplication
 println!("1 + 2 = {} and 8 - 5 = {} and 15 * 3 = {}", 1u32 + 2, 8i32 - 5, 15 * 3);
-~~~
+```
 
 > **Nota:**
->  
+>
 > Cuando llamamos a la macro `println`, agregamos el sufijo de tipos de datos a cada número literal para informar a Rust sobre el tipo de datos. La sintaxis `1u32` indica al compilador que el valor es el número 1 y que interprete el valor como un entero de 32 bits sin signo.
 >
 > Si no se proporcionan anotaciones de tipo, Rust intenta deducir el tipo a partir del contexto. Cuando el contexto es ambiguo, asigna el tipo `i32` (un entero de 32 bits con signo) de forma predeterminada.
@@ -967,11 +980,11 @@ El tipo booleano en Rust se usa para almacenar la veracidad. El tipo `bool` tien
 
 En el ejemplo siguiente, usamos el operador mayor que `>` para probar dos valores. El operador devuelve un valor booleano que muestra el resultado de la prueba.
 
-~~~rust
+```rust
 // Declare variable to store result of "greater than" test, Is 1 > 4? -- false
 let is_bigger = 1 > 4;
 println!("Is 1 > 4? {}", is_bigger);
-~~~
+```
 
 ### Texto: caracteres y cadenas
 
@@ -981,11 +994,11 @@ Rust admite valores de texto con dos tipos de cadena básico y un tipo de carác
 
 El tipo `char` es le más primitivo de los tipos de texto. El valor se especifica poniendo el elemento entre comillas simples:
 
-~~~rust
+```rust
 let uppercase_s = 'S';
 let lowercase_f = 'f';
 let smiley_face = '😀';
-~~~
+```
 
 > **Nota**
 >
@@ -993,7 +1006,7 @@ let smiley_face = '😀';
 
 ### Cadenas
 
-El tipo `str`, también conocido como *segmento de cadena*, es una vista de los datos de la cadena. La mayoría de las veces, se hace referencia a estos tipos usando la sintaxis del estilo de referencia que precede al tipo con el símbolo de y comercial `&str`. Trataremos las referencias en los siguientes módulos. Por ahora, puede imaginarse `&str` como un puntero a datos de cadena inmutables. Los literales de cadena son todos de tipo `&str`.
+El tipo `str`, también conocido como _segmento de cadena_, es una vista de los datos de la cadena. La mayoría de las veces, se hace referencia a estos tipos usando la sintaxis del estilo de referencia que precede al tipo con el símbolo de y comercial `&str`. Trataremos las referencias en los siguientes módulos. Por ahora, puede imaginarse `&str` como un puntero a datos de cadena inmutables. Los literales de cadena son todos de tipo `&str`.
 
 Aunque los literales de cadena son convenientes para usarlos un ejemplos de introducción de Rust, no son adecuados para todas las situaciones en las que podríamos querer usar texto. No todas las cadenas pueden conocerse en tiempo de compilación. Un ejemplo se da cuando un usuario interactúa con un programa en tiempo de ejecución y envía texto mediante un terminal.
 
@@ -1003,7 +1016,7 @@ En estos escenarios. Rust tiene un segundo tipo de cadena denominado `String`. E
 >
 > Si está familiarizado con un lenguaje de recolección de elementos no utilizados, es posible que se pregunte por qué Rust tiene dos tipos de cadena. 1 Las cadenas son tipos de datos extremadamente complejos. La mayoría de los lenguajes usan sus recolectores de elementos no utilizados para atenuar esta complejidad. Rust, como lenguaje de un sistema, expone parte de la complejidad inherente de las cadenas. La complejidad adicional conlleva una cantidad de control muy especifica sobre cómo se usa la memoria en el programa.
 >
->1 _En realidad, Rust tiene más de dos tipos de cadena. En este módulo, solo se describen los tipos `String` y `&str`. Puede obtener más información sobre los tipos de cadena que se ofrecen en la [**documentación de Rust**](https://doc.rust-lang.org/book/ch08-02-strings.html).
+> 1 \_En realidad, Rust tiene más de dos tipos de cadena. En este módulo, solo se describen los tipos `String` y `&str`. Puede obtener más información sobre los tipos de cadena que se ofrecen en la [**documentación de Rust**](https://doc.rust-lang.org/book/ch08-02-strings.html).
 
 No va a obtener una idea completa de la diferencia entre `String` y `&str` hasta que conozca la propiedad y el sistema de préstamos de Rust. Hasta entonces, puede pensar en los datos de tipo `String` como datos de texto que pueden cambiar a medida que se ejecuta el programa. Las referencias `&str` son vistas inmutables en los datos de texto que no cambian a medida que se ejecuta el programa.
 
@@ -1018,11 +1031,11 @@ En el ejemplo siguiente se muestra cómo usar los tipos de datos `char` y `&str`
 
 Observe que la variable `string_1` incluye un espacio vacío al final de la serie de caracteres.
 
-~~~rust
+```rust
 // Specify the data type "char"
 let character_1: char = 'S';
 let character_2: char = 'f';
-   
+
 // Compiler interprets a single item in quotations as the "char" data type
 let smiley_face = '😃';
 
@@ -1033,13 +1046,13 @@ let string_1 = "miley ";
 let string_2: &str = "ace";
 
 println!("{} is a {}{}{}{}.", smiley_face, character_1, string_1, character_2, string_2);
-~~~
+```
 
 Esta es la salida de nuestro ejemplo:
 
-~~~cmd
+```cmd
 😃 is a Smiley face.
-~~~
+```
 
 ¿Qué ocurre si no se especifica el símbolo de y comercial `&` antes de `str` en este ejemplo? Para averiguarlo, intente ejecutar este ejemplo en el [Área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=dafd8dfd9159b2c6db51fdf02d5cb096%3Fazure-portal%3Dtrue).
 
@@ -1065,7 +1078,7 @@ En esta unidad, se explorarán dos tipos de datos que son útiles para trabajar 
 
 ### Tuplas
 
-Una tupla es una agrupación de valores de distintos tipos recopilados en un valor compuesto. Los valores individuales de una tupla se denominan *elementos*. Los valores se especifican como una lista separada por comas entre paréntesis `(<value>, <value>, ...)`.
+Una tupla es una agrupación de valores de distintos tipos recopilados en un valor compuesto. Los valores individuales de una tupla se denominan _elementos_. Los valores se especifican como una lista separada por comas entre paréntesis `(<value>, <value>, ...)`.
 
 Una tupla tiene una longitud fija, que es igual a su número de elementos. Una vez declarada una tupla, no puede aumentar ni reducir su tamaño. No se pueden agregar ni quitar elementos. El tipo de datos de una tupla se define mediante la secuencia de los tipos de datos de los elementos.
 
@@ -1073,10 +1086,10 @@ Una tupla tiene una longitud fija, que es igual a su número de elementos. Una v
 
 Este es un ejemplo de una tupla con tres elementos:
 
-~~~rust
+```rust
 // Tuple of length 3
 let tuple_e = ('E', 5i32, true);
-~~~
+```
 
 En la tabla siguiente se muestra el índice, el valor y el tipo de datos de cada elemento de la tupla:
 
@@ -1090,23 +1103,23 @@ La firma de tipo de esta tupla se define mediante la secuencia de los tipos de l
 
 ### Acceso a elementos de una tupla
 
-Se puede acceder a los elementos de una tupla por la posición del índice, a partir de cero. Este proceso se conoce como *indexación de tupla*. Para acceder a un elemento de una tupla, usamos la sintaxis `<tuple>.<index>`.
+Se puede acceder a los elementos de una tupla por la posición del índice, a partir de cero. Este proceso se conoce como _indexación de tupla_. Para acceder a un elemento de una tupla, usamos la sintaxis `<tuple>.<index>`.
 
 En el ejemplo siguiente se muestra cómo acceder a los elementos de la tupla usando la indexación:
 
-~~~rust
+```rust
 // Declare a tuple of three elements
 let tuple_e = ('E', 5i32, true);
 
 // Use tuple indexing and show the values of the elements in the tuple
 println!("Is '{}' the {}th letter of the alphabet? {}", tuple_e.0,tuple_e.1,tuple_e.2);
-~~~
+```
 
 En el ejemplo se muestra la salida siguiente:
 
-~~~cmd
+```cmd
 Is 'E' the 5th letter of the alphabet? true
-~~~
+```
 
 Este ejemplo se puede explorar en el [Área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=f0c1c833543c9f58af5e49efb77a9fdd%3Fazure-portal%3Dtrue).
 
@@ -1114,19 +1127,19 @@ Las tuplas resultan útiles cuando se quieren combinar tipos distintos en un ún
 
 ### Estructuras
 
-Una estructura es un tipo compuesto por otros tipos. Los elementos de una estructura se denominan *campos*. Al igual que las tuplas, los campos de una estructura pueden tener tipos de datos diferentes. Una ventaja importante del tipo de estructura es que puede asignar un nombre a cada campo, por lo que queda claro lo que significa el valor.
+Una estructura es un tipo compuesto por otros tipos. Los elementos de una estructura se denominan _campos_. Al igual que las tuplas, los campos de una estructura pueden tener tipos de datos diferentes. Una ventaja importante del tipo de estructura es que puede asignar un nombre a cada campo, por lo que queda claro lo que significa el valor.
 
 Para trabajar con estructuras en un programa con Rust, en primer lugar debe definir la estructura por nombre y especificar el tipo de datos de cada campo. Después, debe crear una instancia de la estructura con otro nombre. Al declarar la instancia, se proporcionan los valores específicos para los campos.
 
 Rust admite tres tipos de estructura: clásicas, de tupla y de unidad. Estos tipos de estructura admiten diferentes maneras de agrupar y trabajar con los datos.
 
-- **Las [estructuras de C](https://wikipedia.org/wiki/Struct_(C_programming_language)) clásicas** son las más utilizadas. Cada campo de la estructura tiene un nombre y un tipo de datos. Una vez definida una estructura clásica, se puede acceder a los campos de la estructura usando la sintaxis `<struct>.<field>`.
+- **Las [estructuras de C](<https://wikipedia.org/wiki/Struct_(C_programming_language)>) clásicas** son las más utilizadas. Cada campo de la estructura tiene un nombre y un tipo de datos. Una vez definida una estructura clásica, se puede acceder a los campos de la estructura usando la sintaxis `<struct>.<field>`.
 - **Las estructuras de tupla** son parecidas a las clásicas, pero sus campos no tienen nombres. A fin de acceder a los campos de una estructura de tupla, usamos la misma sintaxis que para indexar una tupla: `<tuple>.<index>`. Al igual que con las tuplas, los valores de índice de la estructura de tupla empiezan por cero.
-- **Las estructuras de unidad** suelen usarse como marcadores. Obtendremos más información sobre por qué las estructuras pueden resultar útiles cuando descubramos la característica *rasgos* de Rust.
+- **Las estructuras de unidad** suelen usarse como marcadores. Obtendremos más información sobre por qué las estructuras pueden resultar útiles cuando descubramos la característica _rasgos_ de Rust.
 
 En el código siguiente se muestran definiciones de ejemplo para las tres variedades de tipos de estructura:
 
-~~~rust
+```rust
 // Classic struct with named fields
 struct Student { name: String, level: u8, remote: bool }
 
@@ -1135,7 +1148,7 @@ struct Grades(char, char, char, char, f32);
 
 // Unit struct
 struct Unit;
-~~~
+```
 
 ### Definición de una estructura
 
@@ -1147,10 +1160,10 @@ Los tipos de estructura se definen a menudo fuera de la función `main` y de otr
 
 Al igual que una función, el cuerpo de una estructura clásica se define entre llaves `{}`. A cada campo de la estructura clásica se le asigna un nombre único dentro de la estructura. El tipo de cada campo se especifica con la sintaxis `: <type>`. Los campos de la estructura clásica se especifican como una lista separada por comas `<field>, <field>, ....` Una definición de estructura clásica **no** termina con un punto y coma.
 
-~~~rust
+```rust
 // Classic struct with named fields
 struct Student { name: String, level: u8, remote: bool }
-~~~
+```
 
 Una ventaja de la definición de estructura clásica es que se puede acceder al valor de un campo de estructura por el nombre. Para acceder al valor de campo, usamos la sintaxis `<struct>.<field>`.
 
@@ -1160,10 +1173,10 @@ Al igual que una tupla, el cuerpo de una estructura de tupla se define entre par
 
 A diferencia de una tupla, la definición de estructura de tupla incluye solo el tipo de datos de cada campo. Los tipos de datos de la estructura de tupla se especifican como una lista separada por comas `<type>, <type>, ...`.
 
-~~~rust
+```rust
 // Tuple struct with data types only
 struct Grades(char, char, char, char, f32);
-~~~
+```
 
 ### Creación de una instancia de una estructura
 
@@ -1171,7 +1184,7 @@ Después de definir un tipo de estructura, para usar la estructura se crea una i
 
 En el ejemplo siguiente se usan las definiciones que hemos creado para los tipos de estructura Student y Grades.
 
-~~~rust
+```rust
 // Instantiate classic struct, specify fields in random order, or in specified order
 let user_1 = Student { name: String::from("Constance Sharma"), remote: true, level: 2 };
 let user_2 = Student { name: String::from("Dyson Tan"), level: 5, remote: false };
@@ -1180,26 +1193,26 @@ let user_2 = Student { name: String::from("Dyson Tan"), level: 5, remote: false 
 let mark_1 = Grades('A', 'A', 'B', 'A', 3.75);
 let mark_2 = Grades('B', 'A', 'A', 'C', 3.25);
 
-println!("{}, level {}. Remote: {}. Grades: {}, {}, {}, {}. Average: {}", 
+println!("{}, level {}. Remote: {}. Grades: {}, {}, {}, {}. Average: {}",
          user_1.name, user_1.level, user_1.remote, mark_1.0, mark_1.1, mark_1.2, mark_1.3, mark_1.4);
-println!("{}, level {}. Remote: {}. Grades: {}, {}, {}, {}. Average: {}", 
+println!("{}, level {}. Remote: {}. Grades: {}, {}, {}, {}. Average: {}",
          user_2.name, user_2.level, user_2.remote, mark_2.0, mark_2.1, mark_2.2, mark_2.3, mark_2.4);
-~~~
+```
 
 ### Conversión de un literal de cadena en un tipo String
 
 Los datos de cadena que se almacenan dentro de otra estructura de datos, como una estructura o un vector, se deben convertir de una referencia literal de cadena (`&str`) a un tipo `String`. Para realizar la conversión, se usa el método `String::from(&str)` estándar. Observe cómo se usa este método en este ejemplo:
 
-~~~rust
+```rust
 // Classic struct with named fields
 struct Student { name: String, level: u8, remote: bool }
 ...
 let user_2 = Student { name: String::from("Dyson Tan"), level: 5, remote: false };
-~~~
+```
 
 Si no se convierte el tipo antes de asignar el valor, el compilador emite un error:
 
-~~~cmd
+```cmd
 error[E0308]: mismatched types
   --> src/main.rs:24:15
    |
@@ -1210,7 +1223,7 @@ error[E0308]: mismatched types
    |               help: try using a conversion method: `"Dyson Tan".to_string()`
 
 error: aborting due to previous error
-~~~
+```
 
 El compilador sugiere que se puede usar la función `.to_string()` para realizar la conversión. En los ejemplos, se usa el método `String::from(&str)`.
 
@@ -1231,3 +1244,206 @@ Responda a las preguntas siguientes para ver lo que ha aprendido. Elija una resp
 - [ ] Todos los campos de una estructura clásica deben ser del mismo tipo de datos. Los campos de una estructura de tupla pueden ser tipos de datos diferentes.
 - [ ] Se puede acceder a los valores de una estructura de tupla mediante la indexación. Solo se puede acceder a los valores de una estructura clásica por nombre de campo.
 - [x] Cada campo de una estructura clásica tiene un nombre y un tipo de datos. Los campos de una estructura de tupla no tienen nombres.
+
+## Uso de variante de enumeración para datos compuestos
+
+Las enumeraciones son tipos que pueden ser una de varias variantes. Lo que Rust denomina enumeraciones se conocen habitualmente como [tipos de datos algebraicos](https://es.wikipedia.org/wiki/Tipo_de_dato_algebraico). Lo importante es que cada variante de enumeración puede tener datos asociados.
+
+Usamos la palabra clave enum para crear un tipo de enumeración, que puede tener cualquier combinación de las variantes de enumeración. Las variantes de enumeración, al igual que las estructuras, pueden tener campos con nombres, pero también los pueden tener sin nombres, o bien no tener ningún campo. Al igual que los tipos de estructura, los tipos de enumeración también se ponen en mayúsculas.
+
+### Definición de una enumeración
+
+En el ejemplo siguiente, se define una enumeración para clasificar un evento web. Cada variante de la enumeración es independiente y almacena diferentes cantidades y tipos de valores.
+
+```rust
+enum WebEvent {
+// An enum variant can be like a unit struct fields or data types
+WELoad,
+// An enum variant can be like a tuple struct with data types but no named fields
+WEKeys(String, char),
+// An enum variant can be like a classic struct with named fields and their data types
+WEClick { x: i64, y: i64 }
+}
+```
+
+La enumeración de nuestro ejemplo tiene tres variantes de tipos diferentes:
+
+- `WELoad` no tiene ningún tipo de datos o datos asociados.
+- `WEKeys` tiene dos campos, con tipos de datos `String` y `char`.
+- `WEMClick` incluye una estructura anónima con campos con nombre `x` y `y`, y sus tipos de datos (`i64`).
+
+Definimos una enumeración con variantes parecidas a la forma en que definimos diferentes clases de tipos de estructura. Todas las variantes se agrupan en el mismo tipo de enumeración `WebEvent`. Cada variante de la enumeración **no es** su propio tipo. Cualquier función que use una variante de la enumeración `WebEvent` debe aceptar todas las variantes de esta. No podemos tener una función que acepte solo la variante `WEClick`, pero no las demás.
+
+### Definición de una enumeración con estructuras
+
+Una manera de evitar los requisitos de variante de la enumeración es definir una estructura independiente para cada variante de esta. Después, cada variante de la enumeración usa la estructura correspondiente. La estructura contiene los mismos datos que tenía la variante de enumeración correspondiente. Este estilo de definición nos permite hacer referencia a cada variante lógica por sí misma.
+
+En el código siguiente se muestra cómo utilizar este estilo de definición alternativo. Las estructuras se definen para contener los datos. Las variantes de la enumeración se definen para hacer referencia a las estructuras.
+
+```rust
+// Define a tuple struct
+struct KeyPress(String, char);
+
+// Define a classic struct
+struct MouseClick { x: i64, y: i64 }
+
+// Redefine the enum variants to use the data from the new structs
+// Update the page Load variant to have the boolean type
+enum WebEvent { WELoad(bool), WEClick(MouseClick), WEKeys(KeyPress) }
+```
+
+### Creación de una instancia de una enumeración
+
+Ahora vamos a agregar código para crear instancias de nuestras variantes de enumeración. Para cada variante, usamos la palabra clave `let` a fin de realizar la asignación. Para acceder a la variante específica en la definición de enumeración, usamos la sintaxis `<enum>::<variant>` con dos puntos dobles `::`.
+
+### Variante simple: WELoad(bool)
+
+La primera variante de la enumeración `WebEvent` tiene un único valor booleano, `WELoad(bool)`. Creamos una instancia de esta variante de forma parecida a como hemos trabajado con los valores booleanos de la unidad anterior:
+
+```rust
+let we_load = WebEvent::WELoad(true);
+```
+
+### Variante de estructura: WEClick(MouseClick)
+
+La segunda variante incluye una estructura clásica `WEClick(MouseClick)`. La estructura tiene dos campos con nombre `x` y `y`, y ambos campos tienen el tipo de datos `i64`. Para crear esta variante, en primer lugar creamos una instancia de la estructura. Después, pasamos la estructura como argumento en la llamada para crear una instancia de la variante.
+
+```rust
+// Instantiate a MouseClick struct and bind the coordinate values
+let click = MouseClick { x: 100, y: 250 };
+
+// Set the WEClick variant to use the data in the click struct
+let we_click = WebEvent::WEClick(click);
+```
+
+### Variable de tupla: WEKeys(KeyPress)
+
+La última variante incluye una tupla `WEKeys(KeyPress)`. La tupla tiene dos campos que usan los tipos de datos `String` y `char`. Para crear esta variante, primero creamos una instancia de la tupla. Después, pasamos la tupla como argumento en la llamada para crear una instancia de la variante.
+
+```rust
+// Instantiate a KeyPress tuple and bind the key values
+let keys = KeyPress(String::from("Ctrl+"), 'N');
+    
+// Set the WEKeys variant to use the data in the keys tuple
+let we_key = WebEvent::WEKeys(keys);
+```
+
+Observe que usamos la sintaxis `String::from("<value>")` en este fragmento de código. Esta sintaxis crea un valor de tipo `String` llamando al método `from` de Rust. El método espera un argumento de entrada de datos entre comillas dobles.
+
+### Ejemplo de enumeraciones
+
+Este es el código final para crear una instancia de las variantes de enumeración:
+
+```rust
+// Define a tuple struct
+#[derive(Debug)]
+struct KeyPress(String, char);
+
+// Define a classic struct
+#[derive(Debug)]
+struct MouseClick { x: i64, y; i64 }
+
+// Define the WebEvent enum variants to use the data from the structs
+// and a boolean type for the page Load variant
+#[derive(Debug)]
+enum WebEvent { WELoad(bool), WEClick(MouseClick), WEKeys(KeyPress) }
+
+fn main() {
+  // Instantiate a MouseClick struct and bind the coordinate values
+  let click = MouseClick { x: 100, y: 250 };
+  println!("Mouse click location: {}, {}", click.x, click.y);
+
+  // Instantiate a KeyPress tuple and bind the key values
+  let keys = KeyPress(String::from("Ctrl+"), 'N');
+  println!("\nKeys pressed: {}{}", keys.0, keys.1);
+
+  // Instantiate WebEvent enum variants
+  // Set the boolean page Load value to true
+  let we_load = WebEvent::WELoad(true);
+  // Set the WEClick variant to use the data in the click struct
+  let we_click = WebEvent::WEClick(click);
+  // Set the WEKeys variant to use the data in the keys tuple
+  let we_key = WebEvent::WEKeys(keys);
+
+  // Print the values in the WebEvent enum variants
+  // Use the {:#?} syntax to display the enum structure and data in a readable form
+  println!("\nWebEvent enum structure: \n\n {:#?} \n\n {:#?} \n\n {:#?}", we_load, we_click, we_key);
+}
+```
+
+Intente interactuar con este código de ejemplo en el [Área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=f81139b1fc896ac6f3e5840f2661dd2f%3Fazure-portal%3Dtrue).
+
+### Instrucciones de depuración
+
+En el ejemplo anterior, busque la siguiente instrucción de código. Esta instrucción se usa en varios lugares del código.
+
+```rust
+// Set the Debug flag so we can check the data in the output
+#[derive(Debug)]
+```
+
+La sintaxis `#[derive(Debug)]` nos permite ver determinados valores durante la ejecución del código que, de lo contrario, no son visibles en la salida estándar. Para ver los datos de depuración con la macro `println!`, usamos la sintaxis `{:#?}` a fin de dar formato a los datos de una manera legible.
+
+Comprobación de conocimientos en uso de variantes de enumeración para datos compuestos
+
+Responda a las preguntas siguientes para ver lo que ha aprendido. Elija una respuesta para cada pregunta y, después, seleccione **Comprobar las respuestas**.
+
+1. **Todas las variantes de una enumeración de Rust se agrupan en el mismo tipo. Las funciones que usan cualquier variante de una enumeración deben aceptar todas sus variantes. ¿Cómo se pueden evitar estos requisitos de la variante de enumeración?**
+
+- [x] Se define una estructura independiente para cada variante de la enumeración a fin de contener los datos de variante.
+- [ ] Se define la enumeración para que solo tenga una variante.
+- [ ] Se define la enumeración para usar variantes del mismo tipo.
+
+## Trabajo con funciones en Rust
+
+Las funciones son la principal forma de ejecutar código en Rust. Ya ha visto una de las funciones más importantes en el lenguaje, la función `main`. En esta unidad, se tratarán más detalles sobre cómo definir funciones.
+
+### Definir una función
+
+Las definiciones de funciones en Rust comienzan por la palabra clave `fn`. Después del nombre de la función, se especifican los argumentos de entrada de la función como una lista separada por comas de los tipos de datos entre paréntesis. Las llaves indican al compilador dónde comienza y termina el cuerpo de la función.
+
+```rust
+fn main() {
+  println!("Hello, world!");
+  goodbye();
+}
+
+fn goodbye() {
+  println!("Goodbye.");
+}
+```
+
+Para llamar a una función, se usa su nombre junto con sus argumentos de entrada entre paréntesis. Si una función no tiene argumentos de entrada, los paréntesis se dejan vacíos. En nuestro ejemplo, las funciones `main` y `goodbye` no tienen argumentos de entrada.
+
+Es posible que haya observado que la función `goodbye` se define después de la función `main`. Podríamos haber definido la función `goodbye` antes de definir `main`. A Rust no le importa en qué parte del archivo se definan las funciones, mientras estas se definan dentro de él.
+
+### Pasar argumentos de entrada
+
+Cuando una función tiene argumentos de entrada, se asigna un nombre a cada argumento y se especifica el tipo de datos al principio de la declaración de función. Dado que los argumentos se llaman como las variables, podemos acceder a los argumentos en el cuerpo de la función.
+
+Ahora se modificará la función `goodbye` para que tome un puntero a alguno datos de cadena como argumento de entrada.
+
+```rust
+fn goodbye(message: &str) {
+  println!("\n{}", message);
+}
+
+fn main() {
+  let formal = "Forma: Goodbye";
+  let casual = "Casual: See you later!";
+
+  goodbye(formal);
+  goodbye(casual);
+}
+```
+
+Para probar la función, se llamará desde la función `main` de dos valores de argumento diferentes y, después, se comprobará la salida:
+
+```cmd
+Formal: Goodbye.
+Casual: See you later!
+```
+
+### Devolución de un valor
+
+[Link: aquí](https://learn.microsoft.com/es-es/training/modules/rust-create-program/6-functions)
