@@ -1446,4 +1446,278 @@ Casual: See you later!
 
 ### Devolución de un valor
 
-[Link: aquí](https://learn.microsoft.com/es-es/training/modules/rust-create-program/6-functions)
+Cuando una función devuelve un valor, agregamos la sintaxis `-> <type>` después de la lista de argumentos de función y antes de la llave de apertura del cuerpo de la función. La sintaxis de flecha `->` indica que la función devuelve un valor al autor de la llamada. La parte `<type>` permite al compilador conocer el tipo de datos del valor devuelto.
+
+En Rust, lo habitual es devolver un valor al final de una función haciendo que la última línea de código de la función sea igual al valor que se va a devolver. En el ejemplo siguiente se muestra este comportamiento. La función `divide_by_5` devuelve el resultado de dividir el número de entrada entre 5 para la función que realiza la llamada:
+
+```rust
+fn divide_by_5(num: u32) -> u32 {
+    num / 5
+}
+
+fn main() {
+    let num = 25;
+    println!("{} divided by 5 = {}", num, divide_by_5(num));
+}
+```
+
+Esta es la salida:
+
+```cmd
+25 divided by 5 = 5
+```
+
+Se puede usar la palabra clave `return` en cualquier punto de la función para detener la ejecución y devolver un valor al autor de la llamada. Normalmente, la palabra clave `return` se usa junto con una prueba condicional.
+
+Este es un ejemplo en el que se usa explícitamente la palabra clave `return` para devolver anticipadamente desde una función si el valor de `num` es 0:
+
+```rust
+fn divide_by_5(num: u32) -> u32 {
+  if num == 0 {
+    // Return Early
+    return 0;
+  }
+  num / 5
+}
+```
+
+Cuando se usa la palabra clave `return` de forma explícita, se finaliza la instrucción con un punto y coma. Si devuelve un valor devuelto sin usar la palabra clave `return`, no termine la instrucción con un punto y coma. Es posible que haya observado que no se ha usado el punto y coma final para la instrucción de valor devuelto `num / 5`.
+
+### Revisión de la firma
+
+La primera parte de la declaración de una funciónn se denomina *frima de función*.
+
+La firma de la función `goodbye` de nuestro ejemplo tiene estas características:
+
+- `fn`: palabra clave de la declaración de función en Rust.
+- `goodbye`: nombre de la función.
+- `(message: &str)`: el argumento o la lista de *parámetros* de la función. Se espera un puntero a los datos de cadena como valor de entrada.
+- `-> bool`: La flecha apunta al tipo de valor que esta función devolverá siempre.
+
+La función `goodbye` acepta un puntero de cadena como entrada y genera un valor booleano.
+
+Se puede interactuar con el código de ejemplo en esta [Área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=6552e6c4f12e51521bdf4654e8971fa7%3Fazure-portal%3Dtrue).
+
+## Ejercicio: Escritura de una función para crear un automóvil
+
+En este ejercicio, usará enumeraciones, estructuras y funciones para procesar pedidos de automóviles nuevos. El desafío consiste en corregir el código de ejemplo para que se compile y se ejecute.
+
+Para trabajar en el código de ejemplo de este ejercicio, tiene dos opciones:
+
+- Copiar el código y editarlo en el entorno de desarrollo local.
+- Abrir el código en un Área de juegos de Rust preparada.
+
+> **Note**
+>
+> En el código de ejemplo, busque la macro `todo!`. Esta macro indica el código que se debe completar o actualizar.
+
+### Definición de una enumeración
+
+La primera tarea consiste en corregir problemas de sintaxis en la definición de enumeración para que el código se compile.
+
+1. Abra el primer bloque del código de ejemplo.
+
+Copie el código siguiente y edítelo en el entorno de desarrollo local, o bien abra el código en esta [Área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=74285b6b784df60101a632314f547b18%3Fazure-portal%3Dtrue) preparada.
+
+```rust
+// Declare Car struct to describe vehicle with four named fields
+struct Car {
+    color: String,
+    transmission: Transmission,
+    convertible: bool,
+    mileage: u32,
+}
+
+#[derive(PartialEq, Debug)]
+// Declare enum for Car transmission type
+enum Transmission {
+    // todo!("Fix enum definition so code compiles");
+    Manual;
+    SemiAuto;
+    Automatic;
+}
+```
+
+2. Corrija el error de sintaxis de la enumeración `Transmission` para que el programa se compile con éxito.
+
+Asegúrese de que el código se compila antes de continuar con la sección siguiente. El código aún no muestra ninguna salida, pero debe compilarse sin errores.
+
+Los mensajes de advertencia del compilador se pueden omitir. Las advertencias se deben a que ha declarado definiciones de enumeración y estructuras, pero aún no las ha usado.
+
+### Creación de una instancia de una estructura
+
+Después, agregue código para que la función `car_factory` cree una instancia de una estructura `Car`. Usaremos los valores de los argumentos de entrada para asignar las características del automóvil.
+
+1. Agregue el bloque de código siguiente al código existente. El código nuevo se puede agregar en la parte superior o inferior del archivo.
+
+```rust
+// Build a "Car" by using values from the input arguments
+// - Color of car (String)
+// - Transmission type (enum value)
+// - Convertible (boolean, true if car is a convertible)
+fn car_factory(color: String, transmission: Transmission, convertible: bool) {
+
+    // Use the values of the input arguments
+    // All new cars always have zero mileage
+    let car: Car = todo!("Create an instance of a `Car` struct");
+}
+```
+
+2. Recompile el código y asegúrese de que se compila. De nuevo, los mensajes de advertencia se pueden ignorar.
+
+3. Complete la declaración de la variable `car` para que cree una instancia de una estructura "Car". El automóvil nuevo debe usar los valores de los argumentos de entrada pasados a la función. Todos los automóviles nuevos tienen cero kilómetros conducidos.
+
+> **Tip**
+>
+> Deberá cambiar la instrucción de una declaración de tipo `let car: Car` a una creación de una instancia `let car = Car { ... }`.
+
+4. Recompile el código y asegúrese de que se compila.
+
+### Devolución de un valor de una función
+
+Ahora, actualice la función `car_factory` para devolver la estructura `Car` creada. Para devolver un valor, la firma de función debe declarar el tipo de valor y el cuerpo de la función debe proporcionar el valor.
+
+1. Modifique la firma de función para declarar el tipo de valor devuelto como una estructura `Car`. Cambiará la línea de código siguiente en el archivo:
+
+```rust
+fn car_factory(color: String, transmission: Transmission, convertible: bool) = todo!("Return a `Car` struct") {
+```
+
+> **Tip**
+>
+> Observe la distinción entre mayúsculas y minúsculas. No intente compilar el código todavía.
+
+2. Para devolver el automóvil recién creado, ajuste la instrucción en la que ha creado una instancia de la estructura `Car`.
+
+```rust
+  let car: Car = todo!("An instance of a `Car` struct", "Set the function return value");
+}
+```
+
+> **Tip**
+>
+> En la sección anterior, ha cambiado la instrucción `let car: Car =` para crear correctamente una instancia de la estructura `Car`. Para completar este paso, puede simplificar este código. Puede crear la estructura `Car` y devolver el automóvil recién creado en una sola instrucción. No tendrá que usar las palabras clave `let` o `return`.
+
+3. Recompile el código y asegúrese de que se compila sin errores.
+
+### Llamada a una función
+
+Ya está a punto para llamar a la función y construir algunos automóviles.
+
+1. Agregue la función `main` al código existente. El código nuevo se puede agregar en la parte superior o inferior del archivo.
+
+```rust
+fn main() {
+  // We have orders for three new cars!
+  // We'll declare a mutable car variable and reuse it for all the cars
+  let mut car = car_factory(String::from("Red"), Transmission::Manual, false);
+  println!("Car 1 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);
+
+  car = car_factory(String::from("Silver"), Transmission::Automatic, true);
+  println!("Car 2 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);
+
+  car = car_factory(String::from("Yellow"), Transmission::SemiAuto, false);
+  println!("Car 3 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);    
+}
+```
+
+2. Recompile el código. Ahora se usan todos los elemetnos declarados, por lo que el compilador no debe emitir errores ni advertencias. Debería ver la siguiente salida:
+
+```cmd
+Car 1 = Red, Manual transmission, convertible: false, mileage: 0
+Car 2 = Silver, Automatic transmission, convertible: true, mileage: 0
+Car 3 = Yellow, SemiAuto transmission, convertible: false, mileage: 0
+```
+
+### Solución en ejericio: de una función para crear un automóvil
+
+Puede comparar el código con la solución preparada en esta [Área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=559a5739b8980054825099fc1c1c5c84%3Fazure-portal%3Dtrue).
+
+```rust
+// Declare Car struct to describe vehicle with four named fields
+struct Car {
+    color: String,
+    transmission: Transmission,
+    convertible: bool,
+    mileage: u32,
+}
+
+#[derive(PartialEq, Debug)]
+// Declare enum for Car transmission type
+enum Transmission {
+    // todo!("Fix enum definition so code compiles");
+    Manual,
+    SemiAuto,
+    Automatic,
+}
+
+// Build a "Car" by using values from the input arguments
+// - Color of car (String)
+// - Transmission type (enum value)
+// - Convertible (boolean, true if car is a convertible)
+fn car_factory(color: String, transmission: Transmission, convertible: bool) -> Car {
+    Car {
+        color: color,
+        transmission: transmission,
+        convertible: convertible,
+        mileage: 0
+    }
+}
+
+fn main() {
+    // We have orders for three new cars!
+    // We'll declare a mutable car variable and reuse it for all the cars
+    let mut car = car_factory(String::from("Red"), Transmission::Manual, false);
+    println!("Car 1 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);
+
+    car = car_factory(String::from("Silver"), Transmission::Automatic, true);
+    println!("Car 2 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);
+
+    car = car_factory(String::from("Yellow"), Transmission::SemiAuto, false);
+    println!("Car 3 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);    
+}
+```
+
+## Resumen en creación del primer programa de Rust
+
+En este módulo, ha revisado la estructura básica de un programa de Rust. La función `main` es el punto de entrada para todos los programas de Rust. La macro `println!` se puede usar para mostrar valores de variable y el progreso del programa. Las variables se definen con la palabra clave `let`. Sus valores se pueden declarar como inmutables o mutables (modificables) con la palabra clave `mut`.
+
+Se han explorado los conceptos básicos del lenguaje Rust, incluidos muchos tipos de datos principales y compuestos. Ha analizado cómo trabajar con números enteros y de punto flotante, caracteres y cadenas de texto, y valores booleanos true/false. El lenguaje Rust interpreta estrictamente los tipos de datos. Un programa solo se compila y se ejecuta correctamente cuando los tipos de datos se definen y usan de la manera adecuada.
+
+En el ejercicio, ha escrito una función para crear un automóvil mediante los datos almacenados en `struct` y `enum`. Ha buscado instancias de la macro `todo!` en el programa de ejemplo y ha completado el código. Ha usado el área de juegos de Rust para modificar el código, compilar el programa y ejecutar el archivo ejecutable.
+
+En el siguiente módulo de esta ruta de aprendizaje, descubrirá más tipos de datos de Rust y cómo usar expresiones condicionales if/else en un programa.
+
+### Más información
+
+Visite los vínculos siguientes para obtener más información sobre algunos de los puntos analizados en este módulo:
+
+- [Introducción a Rust](https://learn.microsoft.com/es-es/training/modules/rust-get-started/)
+- [Más información sobre el tipo de estructura de programación clásica de C](https://wikipedia.org/wiki/Struct_(C_programming_language))
+- [Revisión de los tipos de datos algebraicos](https://wikipedia.org/wiki/Algebraic_data_type)
+
+### Documentación de referencia de Rust
+
+- [El lenguaje de programación Rust](https://doc.rust-lang.org/book/title-page.html)
+- [Revisión de las palabras clave de Rust](https://doc.rust-lang.org/book/appendix-01-keywords.html)
+
+### Rust: tipos de datos
+
+- [Trabajo con matrices](https://doc.rust-lang.org/book/ch03-02-data-types.html#the-array-type?azure-portal=true)
+- [Trabajo con valores booleanos](https://doc.rust-lang.org/book/ch03-02-data-types.html#the-boolean-type?azure-portal=true)
+- [Trabajo con caracteres](https://doc.rust-lang.org/book/ch03-02-data-types.html#the-character-type?azure-portal=true)
+- [Trabajo con números decimales y tipos de número de punto flotante](https://doc.rust-lang.org/book/ch03-02-data-types.html#floating-point-types?azure-portal=true)
+- [Trabajo con enumeraciones](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html)
+- [Trabajo con tipos enteros](https://doc.rust-lang.org/book/ch03-02-data-types.html#integer-types?azure-portal=true)
+- [Operaciones con cadenas](https://doc.rust-lang.org/book/ch08-02-strings.html)
+- [Trabajo con estructuras](https://doc.rust-lang.org/book/ch05-01-defining-structs.html)
+- [Trabajo con tuplas](https://doc.rust-lang.org/book/ch03-02-data-types.html#the-tuple-type?azure-portal=true)
+
+### Rust: conceptos
+
+- [Comprensión de las variables, la mutabilidad y la propiedad reemplazada](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html)
+- [Más información sobre las funciones](https://doc.rust-lang.org/book/ch03-03-how-functions-work.html)
+- [Mostrar la salida con la macro println! macro](https://doc.rust-lang.org/std/macro.println.html)
+- [Indicación del código sin terminar con la macro todo! macro](https://doc.rust-lang.org/stable/std/macro.todo.html)
+
+
