@@ -108,6 +108,19 @@ En esta ruta de aprendizaje, hará lo siguiente:
     - [Definir una función](#definir-una-función)
     - [Pasar argumentos de entrada](#pasar-argumentos-de-entrada)
     - [Devolución de un valor](#devolución-de-un-valor)
+    - [Revisión de la firma](#revisión-de-la-firma)
+  - [Ejercicio: Escritura de una función para crear un automóvil](#ejercicio-escritura-de-una-función-para-crear-un-automóvil)
+    - [Definición de una enumeración](#definición-de-una-enumeración-1)
+    - [Creación de una instancia de una estructura](#creación-de-una-instancia-de-una-estructura-1)
+    - [Devolución de un valor de una función](#devolución-de-un-valor-de-una-función)
+    - [Llamada a una función](#llamada-a-una-función)
+    - [Solución en ejercicio: de una función para crear un automóvil](#solución-en-ejercicio-de-una-función-para-crear-un-automóvil)
+  - [Resumen en creación del primer programa de Rust](#resumen-en-creación-del-primer-programa-de-rust)
+    - [Más información](#más-información)
+    - [Documentación de referencia de Rust](#documentación-de-referencia-de-rust)
+    - [Rust: tipos de datos](#rust-tipos-de-datos)
+    - [Rust: conceptos](#rust-conceptos)
+- [Prueba de condiciones con expresiones if/else en Rust](#prueba-de-condiciones-con-expresiones-ifelse-en-rust)
 
 ---
 
@@ -1323,7 +1336,7 @@ La última variante incluye una tupla `WEKeys(KeyPress)`. La tupla tiene dos cam
 ```rust
 // Instantiate a KeyPress tuple and bind the key values
 let keys = KeyPress(String::from("Ctrl+"), 'N');
-    
+
 // Set the WEKeys variant to use the data in the keys tuple
 let we_key = WebEvent::WEKeys(keys);
 ```
@@ -1485,13 +1498,13 @@ Cuando se usa la palabra clave `return` de forma explícita, se finaliza la inst
 
 ### Revisión de la firma
 
-La primera parte de la declaración de una funciónn se denomina *frima de función*.
+La primera parte de la declaración de una función se denomina _firma de función_.
 
 La firma de la función `goodbye` de nuestro ejemplo tiene estas características:
 
 - `fn`: palabra clave de la declaración de función en Rust.
 - `goodbye`: nombre de la función.
-- `(message: &str)`: el argumento o la lista de *parámetros* de la función. Se espera un puntero a los datos de cadena como valor de entrada.
+- `(message: &str)`: el argumento o la lista de _parámetros_ de la función. Se espera un puntero a los datos de cadena como valor de entrada.
 - `-> bool`: La flecha apunta al tipo de valor que esta función devolverá siempre.
 
 La función `goodbye` acepta un puntero de cadena como entrada y genera un valor booleano.
@@ -1617,7 +1630,7 @@ fn main() {
   println!("Car 2 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);
 
   car = car_factory(String::from("Yellow"), Transmission::SemiAuto, false);
-  println!("Car 3 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);    
+  println!("Car 3 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);
 }
 ```
 
@@ -1629,7 +1642,7 @@ Car 2 = Silver, Automatic transmission, convertible: true, mileage: 0
 Car 3 = Yellow, SemiAuto transmission, convertible: false, mileage: 0
 ```
 
-### Solución en ejericio: de una función para crear un automóvil
+### Solución en ejercicio: de una función para crear un automóvil
 
 Puede comparar el código con la solución preparada en esta [Área de juegos de Rust](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=559a5739b8980054825099fc1c1c5c84%3Fazure-portal%3Dtrue).
 
@@ -1674,7 +1687,7 @@ fn main() {
     println!("Car 2 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);
 
     car = car_factory(String::from("Yellow"), Transmission::SemiAuto, false);
-    println!("Car 3 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);    
+    println!("Car 3 = {}, {:?} transmission, convertible: {}, mileage: {}", car.color, car.transmission, car.convertible, car.mileage);
 }
 ```
 
@@ -1693,7 +1706,7 @@ En el siguiente módulo de esta ruta de aprendizaje, descubrirá más tipos de d
 Visite los vínculos siguientes para obtener más información sobre algunos de los puntos analizados en este módulo:
 
 - [Introducción a Rust](https://learn.microsoft.com/es-es/training/modules/rust-get-started/)
-- [Más información sobre el tipo de estructura de programación clásica de C](https://wikipedia.org/wiki/Struct_(C_programming_language))
+- [Más información sobre el tipo de estructura de programación clásica de C](<https://wikipedia.org/wiki/Struct_(C_programming_language)>)
 - [Revisión de los tipos de datos algebraicos](https://wikipedia.org/wiki/Algebraic_data_type)
 
 ### Documentación de referencia de Rust
@@ -1720,4 +1733,14 @@ Visite los vínculos siguientes para obtener más información sobre algunos de 
 - [Mostrar la salida con la macro println! macro](https://doc.rust-lang.org/std/macro.println.html)
 - [Indicación del código sin terminar con la macro todo! macro](https://doc.rust-lang.org/stable/std/macro.todo.html)
 
+# Prueba de condiciones con expresiones if/else en Rust
 
+Explore los tipos de datos compuesto de Rust, como matrices y vectores. Descubra cómo usar instrucciones if/else para probar condiciones
+
+**Objetivo de aprendizaje**
+
+En este módulo, aprenderá a:
+
+- Explorar tipos de datos compuestos de Rust: matrices y vectores
+- Descubrir cómo usar instrucciones if/else para probar condiciones en un programa de Rust
+- Crear, compilar y ejecutar un programa de Rust para procesar datos compuestos y valores de prueba
